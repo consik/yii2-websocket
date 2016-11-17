@@ -1,4 +1,4 @@
-# Yii2 [WebSocketServer](/blob/master/WebsocketController.php)
+# Yii2 [WebSocketServer](/WebsocketController.php)
 
 Used [Ratchet](http://socketo.me/)
 
@@ -44,37 +44,37 @@ Triggered when socket listening is closed
 
 * EVENT_WEBSOCKET_OPEN_ERROR
 
->  **Class** [events\ExceptionEvent](/blob/master/events/ExceptionEvent.php) - 
+>  **Class** [events\ExceptionEvent](/events/ExceptionEvent.php) - 
 Triggered when throwed Exception on binding socket
 
 * EVENT_CLIENT_CONNECTED
 
-> **Class** [events\WSClientEvent](/blob/master/events/WSClientEvent.php) - 
+> **Class** [events\WSClientEvent](/events/WSClientEvent.php) - 
 Triggered when client connected to the server
 
 * EVENT_CLIENT_DISCONNECTED
 
-> **Class** [events\WSClientEvent](/blob/master/events/WSClientEvent.php) - 
+> **Class** [events\WSClientEvent](/events/WSClientEvent.php) - 
 Triggered when client close connection with server
 
 * EVENT_CLIENT_ERROR
 
-> **Class** [events\WSClientErrorEvent](/blob/master/events/WSClientErrorEvent.php) - 
+> **Class** [events\WSClientErrorEvent](/events/WSClientErrorEvent.php) - 
 Triggered when an error occurs on a Connection
 
 * EVENT_CLIENT_MESSAGE
 
-> **Class** [events\WSClientMessageEvent](/blob/master/events/WSClientMessageEvent.php) - 
+> **Class** [events\WSClientMessageEvent](/events/WSClientMessageEvent.php) - 
 Triggered when message recieved from client
 
 * EVENT_CLIENT_RUN_COMMAND
 
-> **Class** [events\WSClientCommandEvent](/blob/master/events/WSClientCommandEvent.php) - 
+> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) - 
 Triggered when controller starts user's command
 
 * EVENT_CLIENT_END_COMMAND
 
-> **Class** [events\WSClientCommandEvent](/blob/master/events/WSClientCommandEvent.php) - 
+> **Class** [events\WSClientCommandEvent](/events/WSClientCommandEvent.php) - 
 Triggered when controller finished user's command
 
 ## Examples
