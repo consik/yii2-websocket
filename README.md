@@ -1,4 +1,4 @@
-# Yii2 [WebSocketServer](/WebsocketController.php)
+# Yii2 [WebSocketServer](/WebSocketServer.php)
 
 Used [Ratchet](http://socketo.me/)
 
