@@ -1,4 +1,13 @@
 <?php
+/**
+ * @link https://github.com/consik/yii2-websocket
+ * @category yii2-extension
+ * @package consik\yii2websocket
+ * 
+ * @author Sergey Poltaranin <consigliere.kz@gmail.com>
+ * @copyright Copyright (c) 2016
+ */
+
 namespace consik\yii2websocket;
 
 use consik\yii2websocket\events\ExceptionEvent;
@@ -17,15 +26,42 @@ use yii\base\Component;
 
 class WebSocketServer extends Component implements MessageComponentInterface
 {
+    /**
+     * @event yii\base\Event Triggered when binding is successfully completed 
+     */
     const EVENT_WEBSOCKET_OPEN = 'ws_open';
+    /**
+     * @event yii\base\Event Triggered when socket listening is closed 
+     */
     const EVENT_WEBSOCKET_CLOSE = 'ws_close';
+    /**
+     * @event ExceptionEvent Triggered when throwed Exception on binding socket
+     */
     const EVENT_WEBSOCKET_OPEN_ERROR = 'ws_open_error';
 
+    /**
+     * @event WSClientEvent Triggered when client connected to the server
+     */
     const EVENT_CLIENT_CONNECTED = 'ws_client_connected';
+    /**
+     * @event WSClientErrorEvent Triggered when an error occurs on a Connection
+     */
     const EVENT_CLIENT_ERROR = 'ws_client_error';
+    /**
+     * @event WSClientEvent Triggered when client close connection with server
+     */
     const EVENT_CLIENT_DISCONNECTED = 'ws_client_disconnected';
+    /**
+     * @event WSClientMessageEvent Triggered when message recieved from client
+     */
     const EVENT_CLIENT_MESSAGE = 'ws_client_message';
+    /**
+     * @event WSClientCommandEvent Triggered when controller starts user's command
+     */
     const EVENT_CLIENT_RUN_COMMAND = 'ws_client_run_command';
+    /**
+     * @event WSClientCommandEvent Triggered when controller finished user's command
+     */
     const EVENT_CLIENT_END_COMMAND = 'ws_client_end_command';
 
 
@@ -56,6 +92,9 @@ class WebSocketServer extends Component implements MessageComponentInterface
 
     /**
      * @return bool
+     * 
+     * @event yii\base\Event EVENT_WEBSOCKET_OPEN
+     * @event ExceptionEvent EVENT_WEBSOCKET_OPEN_ERROR
      */
     public function start()
     {
@@ -85,6 +124,8 @@ class WebSocketServer extends Component implements MessageComponentInterface
 
     /**
      * @return void
+     *
+     * @event yii\base\Event EVENT_WEBSOCKET_CLOSE
      */
     public function stop()
     {
@@ -180,15 +221,6 @@ class WebSocketServer extends Component implements MessageComponentInterface
      */
     protected function getCommand(ConnectionInterface $from, $msg)
     {
-        /**
-         * There u can parse message, check client rights, etc...
-         *
-         * Example:
-         * Client sends json message like {"action":"chat", "text":"test message"}
-         * if ($json = json_decode($msg)) { return $json['action'] }
-         * If runMessageCommands == true && class method commandChat implemented,
-         * Than will run $this->commandChat($client, $msg); $msg - source message string, $client - ConnectionInterface
-         */
         return null;
     }
 }
