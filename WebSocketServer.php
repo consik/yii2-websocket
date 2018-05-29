@@ -197,13 +197,13 @@ class WebSocketServer extends Component implements MessageComponentInterface
         if ($this->runClientCommands) {
             $command = $this->getCommand($from, $msg);
 
-            if ($command && method_exists($this, 'command' . ucfirst($command))) {
+            if ($command && method_exists($this, 'command' . ucfirst(trim($command, '"')))) {
                 $this->trigger(self::EVENT_CLIENT_RUN_COMMAND, new WSClientCommandEvent([
                     'client' => $from,
                     'command' => $command
                 ]));
 
-                $result = call_user_func([$this, 'command' . ucfirst($command)], $from, $msg);
+                $result = call_user_func([$this, 'command' . ucfirst(trim($command, '"'))], $from, $msg);
 
                 $this->trigger(self::EVENT_CLIENT_END_COMMAND, new WSClientCommandEvent([
                     'client' => $from,
