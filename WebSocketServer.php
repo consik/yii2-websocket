@@ -17,7 +17,8 @@ use consik\yii2websocket\events\WSClientEvent;
 use consik\yii2websocket\events\WSClientMessageEvent;
 use Ratchet\ConnectionInterface;
 use Ratchet\Http\HttpServer;
-use Ratchet\MessageComponentInterface;
+use Ratchet\RFC6455\Messaging\MessageInterface;
+use Ratchet\WebSocket\MessageComponentInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 use Symfony\Component\Console\Event\ConsoleEvent;
@@ -187,8 +188,10 @@ class WebSocketServer extends Component implements MessageComponentInterface
      * @event WSClientCommandEvent EVENT_CLIENT_RUN_COMMAND
      * @event WSClientCommandEvent EVENT_CLIENT_END_COMMAND
      */
-    function onMessage(ConnectionInterface $from, $msg)
+    function onMessage(ConnectionInterface $from, MessageInterface $msg)
     {
+        $msg = $msg->getPayload();
+
         $this->trigger(self::EVENT_CLIENT_MESSAGE, new WSClientMessageEvent([
             'client' => $from,
             'message' => $msg
